@@ -1,4 +1,4 @@
-from Proyecto.Modelos.Candidato import Candidato
+from Modelos.Candidato import Candidato
 
 class ControladorCandidato():
     def __init__(self):
@@ -7,11 +7,11 @@ class ControladorCandidato():
     def index(self):
         print('listar todos los candidatos')
         unCandidato={
-            "id":" ",
-            "cedula":" ",
-            "numeroResolucion":" ",
-            "nombre":" ",
-            "apellido":" "
+            "id":"123",
+            "cedula":"1090445818",
+            "numeroResolucion":"1515",
+            "nombre":"junior",
+            "apellido":"galvan"
         }
         return [unCandidato]
     def crearCandidato(self,infoCandidato):
@@ -19,14 +19,14 @@ class ControladorCandidato():
         elCandidato = Candidato(infoCandidato)
         return elCandidato.__dict__
 
-    def buscarCandidato(self,id):
-        print('mostrando candidato con ',id)
+    def buscarCandidato(self,cedula):
+        print('mostrando candidato con ',cedula)
         elCandidato={
-            "id": id,
-            "cedula": " ",
-            "numeroResolucion": " ",
-            "nombre": " ",
-            "apellido": " "
+            "id": "id",
+            "cedula": cedula,
+            "numeroResolucion": "1414",
+            "nombre": "pepito",
+            "apellido": "perez"
         }
         return elCandidato
 
