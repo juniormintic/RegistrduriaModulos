@@ -62,7 +62,7 @@ def eliminarCandidato(cedula):
 #Rutas de Resultado
 @app.route("/resultado",methods=['GET'])
 def listaResultado():
-    json= ctrlCandidato.index()
+    json= ctrlResultado.index()
     return jsonify(json)
 
 @app.route("/resultado/<string:id>",methods=['GET'])
