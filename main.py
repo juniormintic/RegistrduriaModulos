@@ -5,8 +5,9 @@ from flask_cors import CORS
 import json
 from waitress import serve
 
-#se importa el controlador candidato
+#se importa el controladores
 from Controladores.ControladorCandidato import ControladorCandidato
+from Controladores.ControladorResultado import ControladorResultado
 
 
 app=Flask(__name__)
@@ -15,6 +16,7 @@ cors = CORS(app)
 #se asigna la importacion a una variable para ser usado en las ruta
 #la variable ctrlCandidato tiene todas  las funciones declardas en ControladorCandidato
 ctrlCandidato=ControladorCandidato()
+ctrlResultado=ControladorResultado()
 
 #se crea la ruta del servicio con su methodo
 @app.route("/candidato",methods=['GET'])
@@ -56,9 +58,36 @@ def eliminarCandidato(cedula):
     json= ctrlCandidato.eliminarCandidato(cedula)
     return jsonify(json)
 #fin rutas candidato
+#=================================================================
+#Rutas de Resultado
+@app.route("/resultado",methods=['GET'])
+def listaResultado():
+    json= ctrlCandidato.index()
+    return jsonify(json)
 
+@app.route("/resultado/<string:id>",methods=['GET'])
+def consultaResultado(id):
+    json = ctrlResultado.buscarResultado(id)
+    return jsonify(json)
 
+@app.route("/resuldado",methods=['POST'])
+def crearResultado():
+    data= request.get_json()
+    json=ctrlResultado.crearResultado(data)
+    return jsonify(json)
 
+@app.route("/resultado/<string:id>",methods=['PUT'])
+def actualizarResultado(id):
+    data = request.get_json()
+    json = ctrlResultado.actualizarResultado(id,data)
+    return jsonify(json)
+
+@app.route("/resultado/<string:id>",methods=['DELETE'])
+def eliminarResultado(id):
+    json= ctrlResultado.eliminarResultado(id)
+    return jsonify(json)
+#Fin rutas resultado
+#=================================================================
 def loadFileConfig():
     with open('config.json') as f:
          data = json.load(f)
