@@ -8,7 +8,7 @@ from waitress import serve
 #se importa el controladores
 from Controladores.ControladorCandidato import ControladorCandidato
 from Controladores.ControladorResultado import ControladorResultado
-
+from Controladores.ControladorPartido import ControladorPartido
 
 app=Flask(__name__)
 cors = CORS(app)
@@ -17,6 +17,7 @@ cors = CORS(app)
 #la variable ctrlCandidato tiene todas  las funciones declardas en ControladorCandidato
 ctrlCandidato=ControladorCandidato()
 ctrlResultado=ControladorResultado()
+ctrlPartido=ControladorPartido()
 
 #se crea la ruta del servicio con su methodo
 @app.route("/candidato",methods=['GET'])
@@ -86,7 +87,36 @@ def actualizarResultado(id):
 def eliminarResultado(id):
     json= ctrlResultado.eliminarResultado(id)
     return jsonify(json)
-#Fin rutas resultado
+
+#Rutas de Partido
+@app.route("/partido",methods=['GET'])
+def listaPartido():
+    json= ctrlPartido.index()
+    return jsonify(json)
+
+@app.route("/partido/<string:id>",methods=['GET'])
+def consultaPartido(id):
+    json = ctrlPartido.consultaPartido(id)
+    return jsonify(json)
+
+@app.route("/partido",methods=['POST'])
+def crearPartido():
+    data= request.get_json()
+    json=ctrlPartido.crearPartido(data)
+    return jsonify(json)
+
+@app.route("/partido/<string:id>",methods=['PUT'])
+def actualizarPartido(id):
+    data = request.get_json()
+    json = ctrlPartido.actualizarPartido(id,data)
+    return jsonify(json)
+
+@app.route("/partido/<string:id>",methods=['DELETE'])
+def eliminarPartido(id):
+    json= ctrlPartido.eliminarPartido(id)
+    return jsonify(json)
+#Fin rutas Partido
+
 #=================================================================
 def loadFileConfig():
     with open('config.json') as f:
@@ -97,3 +127,4 @@ if __name__=='__main__':
     dataConfig = loadFileConfig()
     print("Server running : "+"http://"+dataConfig["url-backend"]+":" + str(dataConfig["port"]))
     serve(app,host=dataConfig["url-backend"],port=dataConfig["port"])
+#=================================================================
