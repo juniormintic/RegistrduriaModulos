@@ -71,7 +71,7 @@ def consultaResultado(id):
     json = ctrlResultado.buscarResultado(id)
     return jsonify(json)
 
-@app.route("/resuldado",methods=['POST'])
+@app.route("/resultado",methods=['POST'])
 def crearResultado():
     data= request.get_json()
     json=ctrlResultado.crearResultado(data)
