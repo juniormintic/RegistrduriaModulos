@@ -19,11 +19,11 @@ class ControladorCandidato():
         elCandidato = Candidato(infoCandidato)
         return elCandidato.__dict__
 
-    def buscarCandidato(self,cedula):
-        print('mostrando candidato con ',cedula)
+    def buscarCandidato(self,id):
+        print('mostrando candidato con ',id)
         elCandidato={
-            "id": "id",
-            "cedula": cedula,
+            "id": id,
+            "cedula": "123456789",
             "numeroResolucion": "1414",
             "nombre": "pepito",
             "apellido": "perez"
