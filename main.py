@@ -65,7 +65,7 @@ def listaResultado():
     json= ctrlCandidato.index()
     return jsonify(json)
 
-@app.route("/resultado/<string:id>",methods=['GET'])
+@app.route("/resultado/<string:id>",methods=['GET' ])
 def consultaResultado(id):
     json = ctrlResultado.buscarResultado(id)
     return jsonify(json)
