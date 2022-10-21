@@ -10,7 +10,7 @@ class ControladorResultado():
             "id":"1",
             "numero_mesa":"22",
             "cedula_candidato":"1090445818",
-            "numero_votos":"115"
+            "numero_votos":115
         }
         return [unResultado]
     def crearResultado(self,infoResultado):
@@ -24,14 +24,14 @@ class ControladorResultado():
             "id":id,
             "numero_mesa":"22",
             "cedula_candidato":"1090445818",
-            "numero_votos":"115"
+            "numero_votos":115
         }
         return elResultado
 
     def actualizarResultado(self,id,infoResultado):
         print('actualizar resultado',id)
         elResultado = Resultado(infoResultado)
-        return elCandidato.__dict__
+        return elResultado.__dict__
 
     def eliminarResultado(self,id):
         print('eliminando resultado')
