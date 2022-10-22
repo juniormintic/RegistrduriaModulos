@@ -9,6 +9,7 @@ from waitress import serve
 from Controladores.ControladorCandidato import ControladorCandidato
 from Controladores.ControladorResultado import ControladorResultado
 from Controladores.ControladorPartido import ControladorPartido
+from Controladores.ControladorMesa import ControladorMesa
 
 app=Flask(__name__)
 cors = CORS(app)
@@ -18,6 +19,7 @@ cors = CORS(app)
 ctrlCandidato=ControladorCandidato()
 ctrlResultado=ControladorResultado()
 ctrlPartido=ControladorPartido()
+ctrlMesa=ControladorMesa()
 
 #se crea la ruta del servicio con su methodo
 @app.route("/candidato",methods=['GET'])
@@ -116,6 +118,37 @@ def eliminarPartido(id):
 #Fin rutas Partido
 
 #=================================================================
+
+#inicio rutas Mesa
+
+@app.route("/mesa",methods=['GET'])
+def listaMesa():
+    json=ctrlMesa.index()
+    return jsonify(json)
+@app.route("/mesa/<string:id>",methods=['GET'])
+def consultaMesa(id):
+    json = ctrlMesa.consultaMesa(id)
+    return jsonify(json)
+
+@app.route("/mesa",methods=['POST'])
+def crearMesa():
+    data = request.get_json()
+    mesa = ctrlMesa.crearMesa(data)
+    return jsonify(mesa)
+@app.route("/mesa/<string:id>",methods=['PUT'])
+def actualizarMesa(id):
+    data = request.get_json()
+    mesa = ctrlMesa.actualizarMesa(id,data)
+    return jsonify(mesa)
+
+@app.route("/mesa/<string:id>",methods=['DELETE'])
+def eliminarMesa(id):
+    json = ctrlMesa.eliminarMesa(id)
+    return jsonify(json)
+
+#fin rutas mesa
+#=================================================================
+
 def loadFileConfig():
     with open('config.json') as f:
          data = json.load(f)
