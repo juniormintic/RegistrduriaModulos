@@ -116,7 +116,7 @@ def eliminarPartido(id):
     json= ctrlPartido.eliminarPartido(id)
     return jsonify(json)
 #Fin rutas Partido
-
+##################
 #=================================================================
 
 #inicio rutas Mesa
