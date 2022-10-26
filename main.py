@@ -96,7 +96,7 @@ def listaPartido():
 
 @app.route("/partido/<string:id>",methods=['GET'])
 def consultaPartido(id):
-    json = ctrlPartido.consultaPartido(id)
+    json = ctrlPartido.buscarPartido(id)
     return jsonify(json)
 
 @app.route("/partido",methods=['POST'])
