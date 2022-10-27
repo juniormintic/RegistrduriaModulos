@@ -1,40 +1,48 @@
 from Modelos.Candidato import Candidato
+from Modelos.Partido import Partido
+from Repositorios.RepositorioCandidato import RepositorioCandidato
+
 
 class ControladorCandidato():
     def __init__(self):
         print('prueba de contolador candidato')
+        self.repositorioCandidato=RepositorioCandidato()
+
+    def asignarPartido(self, idCandidato, idPartido):
+        candidatoActual = Candidato(self.repositorioCandidato.findById(idCandidato))
+        partidoActual = Partido(self.repositorioPartido.findById(idPartido))
+        candidatoActual.partido = partidoActual
+        return self.repositorioCandidato.save(candidatoActual)
 
     def index(self):
         print('listar todos los candidatos')
-        unCandidato={
-            "id":"123",
-            "cedula":"1090445818",
-            "numeroResolucion":"1515",
-            "nombre":"junior",
-            "apellido":"galvan"
-        }
-        return [unCandidato]
+        resultado=self.repositorioCandidato.findAll()
+        return  resultado
+
+
     def crearCandidato(self,infoCandidato):
         print('crear al candidato....')
         elCandidato = Candidato(infoCandidato)
-        return elCandidato.__dict__
+        resultado=self.repositorioCandidato.save(elCandidato)
+        return resultado
 
     def buscarCandidato(self,id):
         print('mostrando candidato con ',id)
-        elCandidato={
-            "id": id,
-            "cedula": "123456789",
-            "numeroResolucion": "1414",
-            "nombre": "pepito",
-            "apellido": "perez"
-        }
-        return elCandidato
+        elCandidato= Candidato(self.repositorioCandidato.findById(id))
+        return elCandidato.__dict__
 
     def actualizarCandidato(self,id,infoCandidato):
         print('actualizar candidato...',id)
-        elCandidato = Candidato(infoCandidato)
-        return elCandidato.__dict__
+        candidatoActual =Candidato(self.repositorioCandidato.findById(id))
 
-    def eliminarCandidato(self,id):
-        print('eliminando candidato')
-        return {"delete_conunt": 1}
+        candidatoActual.cedula = infoCandidato["cedula"]
+        candidatoActual.nombre = infoCandidato["nombre"]
+        candidatoActual.apellido = infoCandidato["apellido"]
+        candidatoActual.numeroResolucion = infoCandidato["numeroResolucion"]
+        resultado=self.repositorioCandidato.save(candidatoActual)
+        return resultado
+
+    def eliminarCandidato(self, id):
+        print('eliminando candidato', id)
+        resultado=self.repositorioCandidato.delete(id)
+        return resultado
