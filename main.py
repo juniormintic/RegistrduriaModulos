@@ -22,6 +22,12 @@ ctrlPartido=ControladorPartido()
 ctrlMesa=ControladorMesa()
 
 #se crea la ruta del servicio con su methodo
+
+@app.route("/candidato/<string:idCandidato>/partido/<string:idPartido>", methods=['PUT'])
+def asignarPartidoCandidato(idCandidato, idPartido):
+    print('asignacion de partido al candidato ')
+    json=ctrlCandidato.asignarPartido(idCandidato, idPartido)
+    return jsonify(json)
 @app.route("/candidato",methods=['GET'])
 def listaCandidato():
     #se hace uso de la variable que tiene el ControladorCandidato y se llama a la funcion segun el caso
@@ -80,7 +86,7 @@ def crearResultado():
 @app.route("/resultado/<string:id>",methods=['PUT'])
 def actualizarResultado(id):
     data = request.get_json()
-    json = ctrlResultado.actualizarResultado(id,data)
+    json = ctrlResultado.actualizarResultado(id, data)
     return jsonify(json)
 
 @app.route("/resultado/<string:id>",methods=['DELETE'])
