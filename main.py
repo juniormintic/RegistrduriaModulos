@@ -95,6 +95,7 @@ def eliminarResultado(id):
     return jsonify(json)
 
 #Rutas de Partido
+
 @app.route("/partido",methods=['GET'])
 def listaPartido():
     json= ctrlPartido.index()

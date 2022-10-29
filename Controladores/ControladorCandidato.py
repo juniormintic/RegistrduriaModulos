@@ -1,12 +1,14 @@
 from Modelos.Candidato import Candidato
 from Modelos.Partido import Partido
 from Repositorios.RepositorioCandidato import RepositorioCandidato
+from  Repositorios.RepositorioPartido import RepositorioPartido
 
 
 class ControladorCandidato():
     def __init__(self):
         print('prueba de contolador candidato')
         self.repositorioCandidato=RepositorioCandidato()
+        self.repositorioPartido = RepositorioPartido()
 
     def asignarPartido(self, idCandidato, idPartido):
         candidatoActual = Candidato(self.repositorioCandidato.findById(idCandidato))
