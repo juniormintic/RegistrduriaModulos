@@ -77,18 +77,16 @@ def consultaResultado(id):
     json = ctrlResultado.buscarResultado(id)
     return jsonify(json)
 
-@app.route("/resultado",methods=['POST'])
+@app.route("/resultado/candidato/<string:id_candidato>/mesa/<string:id_mesa>",methods=['POST'])
 def crearResultado():
     data= request.get_json()
     json=ctrlResultado.crearResultado(data)
     return jsonify(json)
-
-@app.route("/resultado/<string:id>",methods=['PUT'])
-def actualizarResultado(id):
+@app.route("/resultado/<string:id>/candidato/<string:id_candidato>/mesa/<string:id_mesa>",methods=['PUT'])
+def actualizarResultado(id, id_candidato, id_mesa):
     data = request.get_json()
-    json = ctrlResultado.actualizarResultado(id, data)
+    json = ctrlResultado.actualizarResultado(id, data, id_candidato, id_mesa)
     return jsonify(json)
-
 @app.route("/resultado/<string:id>",methods=['DELETE'])
 def eliminarResultado(id):
     json= ctrlResultado.eliminarResultado(id)
