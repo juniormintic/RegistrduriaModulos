@@ -78,9 +78,9 @@ def consultaResultado(id):
     return jsonify(json)
 
 @app.route("/resultado/candidato/<string:id_candidato>/mesa/<string:id_mesa>",methods=['POST'])
-def crearResultado():
+def crearResultado(id_candidato,id_mesa):
     data= request.get_json()
-    json=ctrlResultado.crearResultado(data)
+    json=ctrlResultado.crearResultado(data, id_candidato, id_mesa)
     return jsonify(json)
 @app.route("/resultado/<string:id>/candidato/<string:id_candidato>/mesa/<string:id_mesa>",methods=['PUT'])
 def actualizarResultado(id, id_candidato, id_mesa):
