@@ -4,7 +4,7 @@ from Repositorios.RepositorioMesa import RepositorioMesa
 
 class ControladorMesa():
     def __init__(self):
-        print('prueba de controlador mesa')
+        print('prueba de controlador mesa ')
         self.repositorioMesa = RepositorioMesa()
 
     def index(self):

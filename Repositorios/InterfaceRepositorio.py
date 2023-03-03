@@ -7,7 +7,7 @@ import json
 T = TypeVar('T')
 class InterfaceRepositorio(Generic[T]):
     def __init__(self):
-        ca = certifi.where()
+        ca =certifi.where()
         dataConfig = self.loadFileConfig()
         client = pymongo.MongoClient(dataConfig["data-db-connection"],tlsCAFile=ca)
         self.baseDatos = client[dataConfig["name-db"]]
