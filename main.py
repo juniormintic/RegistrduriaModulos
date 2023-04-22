@@ -52,12 +52,12 @@ def crearCandidato():
     return jsonify(json)
 
 
-@app.route("/candidato/<string:cedula>",methods=['PUT'])
-def actualizarCandidato(cedula):
+@app.route("/candidato/<string:id>",methods=['PUT'])
+def actualizarCandidato(id):
     data = request.get_json()
     #para actualizar se requiere cedula y los datos
     #con la cedula se save que candidato es el modificado
-    json = ctrlCandidato.actualizarCandidato(cedula,data)
+    json = ctrlCandidato.actualizarCandidato(id,data)
     return jsonify(json)
 
 @app.route("/candidato/<string:cedula>",methods=['DELETE'])
