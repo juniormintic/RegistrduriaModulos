@@ -41,7 +41,7 @@ class ControladorCandidato():
         candidatoActual.nombre = infoCandidato["nombre"]
         candidatoActual.apellido = infoCandidato["apellido"]
         candidatoActual.numeroResolucion = infoCandidato["numeroResolucion"]
-        resultado=self.repositorioCandidato.save(candidatoActual)
+        resultado=self.repositorioCandidato.update(candidatoActual)
         return resultado
 
     def eliminarCandidato(self, id):
