@@ -39,7 +39,7 @@ def listaCandidato():
 @app.route("/candidato/<string:cedula>",methods=['GET'])
     #la funcion recibe la cedula del candidato
 def consultaCandidato(cedula):
-    #pasa  la cedula al methodo del controlador y retorna un valor
+    #pasa  la cedula al methodo del controlador y retorna un valor..
     json = ctrlCandidato.buscarCandidato(cedula)
     return jsonify(json)
 
