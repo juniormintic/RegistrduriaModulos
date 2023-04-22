@@ -55,6 +55,8 @@ def crearCandidato():
 @app.route("/candidato/<string:id>",methods=['PUT'])
 def actualizarCandidato(id):
     data = request.get_json()
+    #para actualizar se requiere cedula y los datos
+    #con la cedula se save que candidato es el modificado
     json = ctrlCandidato.actualizarCandidato(id,data)
     return jsonify(json)
 

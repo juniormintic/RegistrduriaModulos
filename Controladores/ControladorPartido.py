@@ -4,7 +4,7 @@ from Repositorios.RepositorioCandidato import RepositorioCandidato
 from Repositorios.RepositorioPartido import RepositorioPartido
 class ControladorPartido():
     def __init__(self):
-        print('prueba de contolador Partido ')
+        print('prueba de contolador Partido')
         self.repositorioPartido = RepositorioPartido()
         self.repositorioCandidato = RepositorioCandidato()
 

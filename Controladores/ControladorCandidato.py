@@ -6,7 +6,7 @@ from  Repositorios.RepositorioPartido import RepositorioPartido
 
 class ControladorCandidato():
     def __init__(self):
-        print('prueba de contolador candidato ')
+        print('prueba de contolador candidato')
         self.repositorioCandidato=RepositorioCandidato()
         self.repositorioPartido = RepositorioPartido()
 
@@ -41,7 +41,7 @@ class ControladorCandidato():
         candidatoActual.nombre = infoCandidato["nombre"]
         candidatoActual.apellido = infoCandidato["apellido"]
         candidatoActual.numeroResolucion = infoCandidato["numeroResolucion"]
-        resultado=self.repositorioCandidato.update(candidatoActual)
+        resultado=self.repositorioCandidato.save(candidatoActual)
         return resultado
 
     def eliminarCandidato(self, id):
